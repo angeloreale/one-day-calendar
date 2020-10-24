@@ -27,21 +27,60 @@ const renderHourTimestamp = (start, id) => (
 const Calendar = () => {
   const numHours = END_TIME - START_TIME;
 
-  const eventsWithOffset = _.map(EVENTS,
-    (ev) => ({ start: ev.start, end: ev.end, offset: 0 }));
+  const eventsWithOffset = _.sortBy(_.map(EVENTS,
+    (ev) => ({
+      start: ev.start, end: ev.end, offset: 0, columns: 1,
+    })), 'start');
 
   const evaluateEvent = (position, events) => {
-    let counter = 0;
+    let referenceStart = events[position].start;
+    let referenceEnd = events[position].end;
+    const sequenceOverlapIndexes = [];
+    let counter = 1;
+    _.forEach(events, (_event, i) => {
+      if (i !== position) {
+        if (!(_event.end < referenceStart)) {
+          if (_event.start >= referenceStart && _event.start < referenceEnd) {
+            referenceStart = _event.start;
+            counter += 1;
+            sequenceOverlapIndexes.push(i);
+
+            if (_event.end > referenceEnd) {
+              referenceEnd = _event.end;
+            }
+          } else if ((_event.end > referenceStart && _event.start <= referenceStart)) {
+            counter += 1;
+            sequenceOverlapIndexes.push(i);
+            if (_event.end > referenceEnd) {
+              referenceEnd = _event.end;
+            }
+          }
+          eventsWithOffset[position].columns = Math.max(
+            eventsWithOffset[position].columns, counter,
+          );
+        }
+      }
+    });
+
+    _.forEach(sequenceOverlapIndexes, (i) => {
+      eventsWithOffset[i].columns = Math.max(eventsWithOffset[i].columns, counter);
+    });
+
+    // set offset
     _.forEach(events, (_event, i) => {
       if (i !== position) {
         if ((_event.start >= events[position].start && _event.start < events[position].end)
           || (events[position].start < _event.end && events[position].start >= _event.start)) {
-          counter += 1;
+          // counter += 1;
           eventsWithOffset[i].offset = eventsWithOffset[position].offset + 1;
         }
       }
     });
-    return { numCols: counter + 1, offset: eventsWithOffset[position].offset };
+
+    return {
+      numCols: eventsWithOffset[position].columns,
+      offset: eventsWithOffset[position].offset,
+    };
   };
   return (
     <div className="O-Calendar">
@@ -70,6 +109,7 @@ const Calendar = () => {
               const top = 48 * (event.start / 30) * INTERVAL;
               const left = width * (offset);
               const isHalfHour = event.end - event.start === 30;
+              console.log(offset);
               return (
                 <div
                   style={{
