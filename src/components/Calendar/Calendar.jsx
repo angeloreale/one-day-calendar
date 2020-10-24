@@ -102,14 +102,13 @@ const Calendar = () => {
         ))}
         <div className="M-EventsGrid--wrapper">
           <div className="M-EventsGrid">
-            {_.map(EVENTS, (event, position) => {
+            {_.map(eventsWithOffset, (event, position) => {
               const { numCols, offset } = evaluateEvent(position, eventsWithOffset);
               const width = 100 / (numCols);
               const height = 48 * ((event.end - event.start) / 30) * INTERVAL;
               const top = 48 * (event.start / 30) * INTERVAL;
               const left = width * (offset);
               const isHalfHour = event.end - event.start === 30;
-              console.log(offset);
               return (
                 <div
                   style={{
