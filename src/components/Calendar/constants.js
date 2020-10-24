@@ -11,3 +11,4 @@ export const EVENTS = [
 export const START_TIME = 8;
 export const END_TIME = 19;
 export const INTERVAL = 0.5;
+export const HOUR_HEIGHT = 60;

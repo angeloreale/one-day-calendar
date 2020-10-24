@@ -1,7 +1,7 @@
 import React from 'react';
 import _ from 'lodash';
 import {
-  START_TIME, END_TIME, EVENTS, INTERVAL,
+  START_TIME, END_TIME, EVENTS, INTERVAL, HOUR_HEIGHT,
 } from './constants';
 
 import './Calendar.scss';
@@ -71,7 +71,6 @@ const Calendar = () => {
       if (i !== position) {
         if ((_event.start >= events[position].start && _event.start < events[position].end)
           || (events[position].start < _event.end && events[position].start >= _event.start)) {
-          // counter += 1;
           eventsWithOffset[i].offset = eventsWithOffset[position].offset + 1;
         }
       }
@@ -105,8 +104,8 @@ const Calendar = () => {
             {_.map(eventsWithOffset, (event, position) => {
               const { numCols, offset } = evaluateEvent(position, eventsWithOffset);
               const width = 100 / (numCols);
-              const height = 48 * ((event.end - event.start) / 30) * INTERVAL;
-              const top = 48 * (event.start / 30) * INTERVAL;
+              const height = HOUR_HEIGHT * ((event.end - event.start) / 30) * INTERVAL;
+              const top = HOUR_HEIGHT * (event.start / 30) * INTERVAL;
               const left = width * (offset);
               const isHalfHour = event.end - event.start === 30;
               return (
