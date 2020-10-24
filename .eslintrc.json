@@ -1,0 +1,35 @@
+{
+  "root": true,
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "jest": true
+  },
+  "globals": {
+    "page": true,
+    "browser": true
+  },
+  "extends": [
+    "airbnb",
+    "plugin:jest/recommended",
+    "plugin:react-hooks/recommended"
+  ],
+  "plugins": [
+    "jest",
+    "react-hooks"
+  ],
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 12,
+    "ecmaFeatures": {
+      "jsx": true,
+      "impliedStrict": true,
+      "experimentalObjectRestSpread": true
+    }
+  },
+  "rules": {
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
+  }
+}
