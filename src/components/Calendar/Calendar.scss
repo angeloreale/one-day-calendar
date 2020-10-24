@@ -1,0 +1,118 @@
+@import "../../styles/main.scss";
+
+.O-Calendar {
+  height: fit-content;
+  display: flex;
+  padding: 4rem;
+  &__left-timestamps {
+    max-width: fit-content;
+    min-width: 12.5%;
+  }
+
+  &__right-events-grid {
+    width: 100%;
+    border: 1px solid $silver-chalice;
+    position: relative;
+  }
+}
+
+.M-HourLabel {
+  height: $calendar-row;
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+
+  font-size: 16px;
+  line-height: 18.75px;
+  font-family: "Roboto", sans-serif;
+
+  &--last {
+    position: relative;
+  }
+
+  &__full-hour--ampm,
+  &__half-hour {
+    font-size: 12px;
+    line-height: 14.06px;
+    color: $silver-chalice;
+  }
+
+  &__full-hour {
+    width: 100%;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: baseline;
+
+    position: absolute;
+    left: 0;
+    top: -4px;
+
+    &--last {
+      position: absolute;
+      bottom: 0;
+    }
+
+    &--ampm {
+      margin-left: 8px;
+      margin-right: 12px;
+      position: relative;
+    }
+  }
+
+  &__half-hour {
+    margin-top: 12px;
+    margin-right: 12px;
+    text-align: right;
+  }
+}
+
+.M-TimeBlock {
+  height: $calendar-row;
+  width: 100%;
+  border-bottom: 1px solid $silver-chalice;
+  box-sizing: border-box;
+
+  &:last-of-type {
+    border: none;
+  }
+}
+
+.M-EventsGrid {
+  width: 100%;
+  position: relative;
+  display: flex;
+  &--wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.M-Event {
+  background-color: $gallery;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  line-height: 18.75px;
+  padding: 10px 18px;
+  border-radius: 010px;
+  border: 1px solid black;
+  box-sizing: border-box;
+  margin: 0 8px;
+  height: 100%;
+
+  &--half {
+    padding: 0 18px;
+  }
+
+  &--wrapper {
+    position: absolute;
+    padding: 2px 4px;
+    box-sizing: border-box;
+  }
+}
