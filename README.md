@@ -4,6 +4,8 @@ This app consists of a one day static timetable that plugs events into their res
 
 This app was bootstrapped by CRA, setup with Airbnb ESlint standards, and unint tested using Jest and Enzyme.
 
+Live demo: [https://angeloreale.com/one-day-calendar/index.html]
+
 Key commands:
 - `npm run start` starts local.
 - `npm run test` starts tests watcher.
