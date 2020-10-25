@@ -4,7 +4,7 @@ export const EVENTS = [
   { start: 180, end: 240 },
   { start: 180, end: 240 },
   { start: 150, end: 240 },
-  { start: 150, end: 300 },
+  { start: 150, end: 330 },
   { start: 300, end: 360 },
   { start: 330, end: 390 },
   { start: 360, end: 390 },
