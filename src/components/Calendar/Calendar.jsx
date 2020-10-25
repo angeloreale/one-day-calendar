@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import _ from 'lodash';
 import { v4 as uuid } from 'uuid';
 
-import { HourLabel } from './components';
+import { HourLabel, Event } from './components';
 
 import {
   START_TIME, END_TIME, EVENTS, INTERVAL, HOUR_HEIGHT,
@@ -75,8 +75,8 @@ const Calendar = () => {
         <HourLabel start={END_TIME} id={uuid()} />
       </div>
       <div className="O-Calendar__right-events-grid">
-        {_.times(numHours, (_i) => (
-          <div key={`timeblock--${_i}`} className="M-TimeBlock" />
+        {_.times(numHours, () => (
+          <div key={`timeblock--${uuid}`} className="M-TimeBlock" />
         ))}
         <div className="M-EventsGrid--wrapper">
           <div className="M-EventsGrid">
@@ -88,16 +88,13 @@ const Calendar = () => {
               const left = width * (offset);
               const isHalfHour = event.end - event.start === 30;
               return (
-                <div
-                  style={{
-                    width: `${width}%`, height, top, left: `${left}%`,
-                  }}
-                  className="M-Event--wrapper"
-                >
-                  <div className={`M-Event ${isHalfHour ? 'M-Event--half' : ''}`}>
-                    Lorem ipsum dolor sit amet
-                  </div>
-                </div>
+                <Event
+                  top={top}
+                  left={left}
+                  height={height}
+                  width={width}
+                  isHalfHour={isHalfHour}
+                />
               );
             })}
           </div>
