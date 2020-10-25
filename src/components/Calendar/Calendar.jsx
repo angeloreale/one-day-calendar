@@ -27,10 +27,11 @@ const renderHourTimestamp = (start, id) => (
 const Calendar = () => {
   const numHours = END_TIME - START_TIME;
 
-  const eventsWithOffset = _.sortBy(_.map(EVENTS,
-    (ev) => ({
-      start: ev.start, end: ev.end, offset: 0, columns: 1,
-    })), 'start');
+  const eventsWithOffset = _.sortBy(_.map(_.filter(EVENTS,
+    (ev) => ev.start > 0 && ev.start < (END_TIME * 30)),
+  (ev) => ({
+    start: ev.start, end: ev.end, offset: 0, columns: 1,
+  })), 'start');
 
   const evaluateEvent = (position, events) => {
     let referenceStart = events[position].start;

@@ -9,6 +9,7 @@ export const EVENTS = [
   { start: 330, end: 390 },
   { start: 360, end: 390 },
   { start: 390, end: 420 },
+  { start: 540, end: 2400 },
 ];
 export const START_TIME = 8;
 export const END_TIME = 19;
