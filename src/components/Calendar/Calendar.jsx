@@ -1,28 +1,14 @@
 import React, { useMemo } from 'react';
 import _ from 'lodash';
+import { v4 as uuid } from 'uuid';
+
+import { HourLabel } from './components';
+
 import {
   START_TIME, END_TIME, EVENTS, INTERVAL, HOUR_HEIGHT,
 } from './constants';
 
 import './Calendar.scss';
-
-const parseHourAMPM = (hour) => (hour > 12 ? hour - 12 : hour);
-
-const renderHourTimestamp = (start, id) => (
-  <div className="M-HourLabel" key={`timestamp--${id}`}>
-    <div className="M-HourLabel__full-hour">
-      {parseHourAMPM(start)}
-      :00
-      <span className="M-HourLabel__full-hour--ampm">
-        {start < 12 ? 'am' : 'pm'}
-      </span>
-    </div>
-    <div className="M-HourLabel__half-hour">
-      {parseHourAMPM(start)}
-      :30
-    </div>
-  </div>
-);
 
 const Calendar = () => {
   const numHours = END_TIME - START_TIME;
@@ -85,16 +71,8 @@ const Calendar = () => {
   return (
     <div className="O-Calendar">
       <div className="O-Calendar__left-timestamps">
-        {_.times(numHours, (_i) => renderHourTimestamp(_i + START_TIME, _i))}
-        <div className="M-HourLabel--last">
-          <div className="M-HourLabel__full-hour M-HourLabel__full-hour--last">
-            {parseHourAMPM(END_TIME)}
-            :00
-            <span className="M-HourLabel__full-hour--ampm">
-              {END_TIME < 12 ? 'am' : 'pm'}
-            </span>
-          </div>
-        </div>
+        {_.times(numHours, (_i) => (<HourLabel start={_i + START_TIME} id={uuid()} hasHalf />))}
+        <HourLabel start={END_TIME} id={uuid()} />
       </div>
       <div className="O-Calendar__right-events-grid">
         {_.times(numHours, (_i) => (
