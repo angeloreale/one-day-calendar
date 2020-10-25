@@ -14,6 +14,6 @@ Key commands:
 
 Areas that need improvement:
 - Calendar component tests could be more thorough to account for edge cases.
-- Calendar component evaluate events logic has a large big O, and could be further optimized.
+- Calendar component logics for event splitting accross columns has a large big O, and could be further optimized.
 
 CC-BY 2020 Angelo Reale.
