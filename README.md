@@ -2,7 +2,7 @@
 
 This app consists of a one day static timetable that plugs events into their respective time and handle the overlap of events by splitting them into columns.
 
-This app was bootstrapped by CRA, setup with Airbnb ESlint standards, and unint tested using Jest and Enzyme.
+This app was bootstrapped by CRA, setup with Airbnb ESlint standards, and unit tested using Jest and Enzyme.
 
 Live demo: [https://angeloreale.com/one-day-calendar/index.html]
 
