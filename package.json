@@ -158,5 +158,6 @@
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-loader": "^4.0.2",
     "eslint-plugin-react": "^7.21.5"
-  }
+  },
+  "homepage": "https://angeloreale.com/one-day-calendar/"
 }
