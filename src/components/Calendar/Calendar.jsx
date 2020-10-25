@@ -76,7 +76,7 @@ const Calendar = () => {
       </div>
       <div className="O-Calendar__right-events-grid">
         {_.times(numHours, () => (
-          <div key={`timeblock--${uuid}`} className="M-TimeBlock" />
+          <div key={`timeblock--${uuid}`} className="A-TimeBlock" />
         ))}
         <div className="M-EventsGrid--wrapper">
           <div className="M-EventsGrid">
