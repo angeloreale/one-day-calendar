@@ -6,7 +6,8 @@
   padding: 4rem;
   &__left-timestamps {
     max-width: fit-content;
-    min-width: 12.5%;
+    width: 6.125%;
+    min-width: 64px;
   }
 
   &__right-events-grid {
