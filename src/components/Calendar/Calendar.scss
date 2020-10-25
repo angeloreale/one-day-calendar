@@ -104,9 +104,12 @@
   box-sizing: border-box;
   margin: 0 8px;
   height: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   &--half {
-    padding: 2px 18px;
+    padding: 4px 18px;
   }
 
   &--wrapper {
