@@ -18,7 +18,7 @@ const Calendar = ({ loadedEvents }) => {
     (ev) => ev.start > 0 && ev.start < (END_TIME * 30)),
   (ev) => ({
     start: ev.start, end: ev.end, offset: 0, columns: 1,
-  })), 'start'), []);
+  })), 'start'), [loadedEvents]);
 
   const evaluateEvent = (position, events) => {
     let referenceStart = events[position].start;
